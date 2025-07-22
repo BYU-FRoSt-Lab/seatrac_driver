@@ -35,7 +35,6 @@ inline std::ostream& operator<<(std::ostream& os,
     os << "DataQueueSet Request: "
        << "\n- target:\t" << msg.destId
        << "\n- msg type:\t" << msg.msgType
-       << "\n- queue action:\t" << (int)msg.queueAction
        << "\n- packet length:\t" << (int)msg.packetLen
        << "\nPacket Data:\n- (char):\t";
     for (uint8_t i = 0; i < msg.packetLen; i++) {

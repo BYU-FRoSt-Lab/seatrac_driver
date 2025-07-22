@@ -15,7 +15,6 @@ struct DataQueueSet : public Message<DataQueueSet> {
     struct Request : public Message<Request> {
         static const CID_E Identifier = CID_DAT_QUEUE_SET;
         BID_E destId;
-        AMSGTYPE_E msgType;
         uint8_t packetLen;
         uint8_t packetData[30];
     } __attribute__((packed));
@@ -34,7 +33,6 @@ inline std::ostream& operator<<(std::ostream& os,
 {
     os << "DataQueueSet Request: "
        << "\n- target:\t" << msg.destId
-       << "\n- msg type:\t" << msg.msgType
        << "\n- packet length:\t" << (int)msg.packetLen
        << "\nPacket Data:\n- (char):\t";
     for (uint8_t i = 0; i < msg.packetLen; i++) {

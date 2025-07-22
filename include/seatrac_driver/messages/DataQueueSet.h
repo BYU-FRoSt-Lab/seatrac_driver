@@ -21,6 +21,7 @@ struct DataQueueSet : public Message<DataQueueSet> {
 
     CST_E status;
     BID_E beaconId;
+    uint8_t packetLen;
 
 } __attribute__((packed));
 
@@ -54,6 +55,7 @@ inline std::ostream& operator<<(std::ostream& os,
 {
     os << "DataQueueSet Response: " << std::endl
        << "- status: " << msg.status << std::endl
+       << "- packet length: " << msg.packetLen << std::endl
        << "- beaconId: " << msg.beaconId << std::endl;
     return os;
 }

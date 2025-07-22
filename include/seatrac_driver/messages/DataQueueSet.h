@@ -16,7 +16,6 @@ struct DataQueueSet : public Message<DataQueueSet> {
         static const CID_E Identifier = CID_DAT_QUEUE_SET;
         BID_E destId;
         AMSGTYPE_E msgType;
-        uint8_t queueAction;   // new field to specify push/clear/etc
         uint8_t packetLen;
         uint8_t packetData[30];
     } __attribute__((packed));

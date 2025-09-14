@@ -10,7 +10,7 @@ using namespace std::chrono_literals;
 using namespace narval::seatrac;
 using std::string;
 
-#define DEFAULT_SERIAL_PORT "/dev/frost/rs232_connector_seatrac"
+#define DEFAULT_SERIAL_PORT "/dev/ttyUSB0"
 
 
 /**

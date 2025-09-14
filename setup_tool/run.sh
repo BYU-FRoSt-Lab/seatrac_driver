@@ -1,2 +1,2 @@
 
-./build/setup_seatrac_beacon $1
+./build/setup_seatrac_beacon

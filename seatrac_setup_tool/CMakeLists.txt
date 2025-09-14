@@ -11,5 +11,5 @@ if(NOT TARGET seatrac_driver)
     FetchContent_MakeAvailable(seatrac_driver)
 endif()
 
-add_executable(setup_seatrac_beacon src/seatrac_beacon_setup_tool.cpp)
+add_executable(setup_seatrac_beacon src/seatrac_calibration_and_settings.cpp)
 target_link_libraries(setup_seatrac_beacon PRIVATE seatrac_driver)

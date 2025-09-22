@@ -48,6 +48,7 @@ list(APPEND seatrac_driver_headers
     include/seatrac_driver/messages/DataSend.h
     include/seatrac_driver/messages/DataReceive.h
     include/seatrac_driver/messages/DataError.h
+    include/seatrac_driver/messages/DataQueueSet.h
 
     include/seatrac_driver/messages/EchoSend.h
     include/seatrac_driver/messages/EchoReq.h

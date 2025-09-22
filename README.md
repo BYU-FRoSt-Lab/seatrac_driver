@@ -5,22 +5,20 @@ This is a c++ driver for the Blueprint Subsea SeaTrac x100 series of USBL beacon
 It is a fork of the seatrac_driver written by Pierre Narvor:
 https://gitlab.ensta-bretagne.fr/narvorpi/seatrac_driver.
 
-If this is your first time using the driver, there are four c++ examples you can try
-to test out the beacon's acoustic transmission capabilities.
+Four examples are included for a quick start.
 
-This repository also includes a ros2 node built on top of the c++ driver. If you don't
-plan on using the driver at the c++ level, you can skip to the ROS2 section of
-the readme.
+## Firmware Version Support
+
+Supports x150/x110 beacon firmware v2.2 - v2.4.
+
+Full support for latest firmware release (through v3.7) is currently in developement.
 
 ## Installation
 
-This is a standard cmake package. It can be installed manually and found by
-your project using `CMAKE_PREFIX_PATH`, or installed automatically in your cmake
-file using `FetchContent`.
+This is a standard cmake package.
 
-#### Automatic Installation using CMake
-Using FetchContent in your CMake, you can automatically download and install
-seatrac_driver from its git repository. Simply include
+#### Automatic Installation using FetchContent
+Using FetchContent, CMake can automatically download and install seatrac_driver from this repository when you build your project. Simply include
 
 ```cmake
 include(FetchContent)
@@ -31,12 +29,10 @@ FetchContent_Declare(seatrac_driver
 FetchContent_MakeAvailable(seatrac_driver)
 ```
 
-in your CMake file and you're good to go.
+in your CMake file.
 
 #### Manual Installation
-While using FetchContent is the simplest and least likely to encounter errors,
-you also have the option to install the driver manually.
-To install manually, run the following set of bash commands:
+To install manually, execute the following in your terminal:
 
 ```bash
 git clone https://github.com/BYU-FRoSt-Lab/seatrac_driver.git
@@ -64,9 +60,7 @@ echo "export CMAKE_PREFIX_PATH=<your_install_location_full_path>:\$CMAKE_PREFIX_
 Then, add `find_package(seatrac_driver REQUIRED)` to your CMake.
 
 #### CMake
-This is an example of what the CMake file for your project might look like.
-This CMake first tries to find a local installation. If that doesn't work,
-it downloads seatrac_driver from the git repository.
+This is an example of what the CMake file for your project might look like. It first searches for a local installation. If one isn't available, it downloads and installs seatrac_driver from this repository.
 
 ```cmake
 cmake_minimum_required(VERSION 3.6)
@@ -86,22 +80,18 @@ add_executable(your_execuatable ...)
 target_link_libraries(your_executable PRIVATE seatrac_driver)
 ```
 
-#### Installation Troubleshooting
-Some common issues that may occur during installation
+#### Dependancies
 
-* Cannot find Boost: Boost is another dependency of seatrac_driver. You can install it with
+* Boost: may be installed with
   ```sudo apt-get install libboost-all-dev```
-* Cannot find librtac_asio.so: rtac_asio is a dependency of seatrac_driver.
-	The CMake file for seatrac_driver first looks for a local installation,
-	and then pulls it from the git repository if it can't find it locally.
-	You can install it from https://github.com/pnarvor/rtac_asio.
+* rtac_asio: The CMake file for seatrac_driver first looks for a local installation, and then pulls it from the git repository if it can't find it locally. It can be installed from https://github.com/pnarvor/rtac_asio.
     
 
 
 ## Examples
 
 This driver includes c++ examples for each of the 4 acoustic message protocols:
-PING, DAT, ECHO, and NAV. For new users, these examples are a good place to start.
+PING, DAT, ECHO, and NAV.
 
 #### To run each example:
 
@@ -114,20 +104,15 @@ PING, DAT, ECHO, and NAV. For new users, these examples are a good place to star
 	make
 	cd ..
 	```
-	Each example is setup to find and download the driver from this git
-	repository (using FetchContent) if it cannot find an existing
-	seatrac_driver on your computer.
+	Driver installation is not necessary to build the examples. Each example is setup to find and download the driver from this repository (using FetchContent) if it cannot find an existing installation on your computer.
 4. Run the example: `./build/<example_name> <serial_port>`
-	The executable name is the same as the example folder name.
-	It takes one argument - the serial port that the SeaTrac modem is
-	connected too (for example `/dev/ttyUSB0`).
+	The executable name is the same as the example folder name. It takes one argument - the serial port that the SeaTrac modem is connected too (for example `/dev/ttyUSB0`).
     
 
 
-## Using with c++
+## Usage
     
-You can interface with the beacon by subclassing `SeatracDriver` class from `SeatracDriver.h`,
-and initializing it with the serial port connection as an argument:
+You can interface with the beacon by subclassing `SeatracDriver` from `SeatracDriver.h`, and initializing it with the serial port connection as an argument:
 
 ```c++
 #include <seatrac_driver/SeatracDriver.h>
@@ -144,15 +129,9 @@ int main() {
 }
 ```
 
-#### Reading messages from the beacon (c++)
+#### Reading messages from the beacon
 
-All messages received from the beacon will result in a call to the `SeatracDriver::on_message`
-method. The first argument of on_message is the message id, a uint8 that tells you what
-type of message you received. msgId is defined by the CID_E enum from SeatracEnums.h.
-You can access the contents of the message by copying its data into a message struct.
-Message structs can be found in the include/seatrac_driver/messages folder. You can only
-fill a message struct of the same type as the msgId. Ideally, this can be ensured with
-a switch statement.
+All messages received from the beacon will result in a call to the `SeatracDriver::on_message` method. The first argument of on_message is the message id, a uint8 that tells you what type of message you received. msgId is defined by the CID_E enum from SeatracEnums.h. You can access the contents of the message by copying its data into a message struct. Message structs can be found in the include/seatrac_driver/messages folder. You can only fill a message struct of the same type as the msgId.
 
 ```c++
 class MyDriver : public SeatracDriver {
@@ -166,14 +145,10 @@ class MyDriver : public SeatracDriver {
 }
 ```
 
-#### Sending messages too the beacon (c++)
+#### Sending messages too the beacon
 
 You can send a message to the beacon using the `SeatracDriver::send` method.
-`SeatracDriver::send` takes a byte array pointer and number of bytes as arguments.
-First, create a class of type `<MessageType>::Request`. Specify the request struct
-fields, then send it by recasting the struct as a byte array pointer. When sending
-a message, you do not have to specify the CID_E message id, since the Request
-struct has already defined it for you.
+`SeatracDriver::send` takes a byte array pointer and number of bytes as arguments. First, create a class of type `<MessageType>::Request`. Specify the request struct fields, then send it by recasting the struct as a byte array pointer. When sending a message, you do not have to specify the CID_E message id, since the Request struct has already defined it for you.
 
 ```c++
 class MyDriver : public SeatracDriver {
@@ -186,16 +161,11 @@ class MyDriver : public SeatracDriver {
 }
 ```
 
-#### Other features
+#### Additional features
 
-* commands.h - Provides a set of higher level functions to quickly write code
-	that works with the beacon. It has functions that change settings, change
-	the beacon id, or send acoustic messages.
-* `SeatracDriver::send_request` and `SeatracDriver::wait_for_message` - `send_request` sends a
-	request to the beacon and blocks until the beacon returns a response message. It
-	dumps the returned data in a response structure pointer argument. `wait_for_data`
-	blocks until the beacon returns a message with the correct CID_E. It then fills
-	the response structure with the data received.
+* commands.h - Provides a set of higher level functions to quickly interface with the beacon. It includes functions to change settings, change the beacon id, or send acoustic messages.
+
+* `SeatracDriver::send_request` and `SeatracDriver::wait_for_message` - `send_request` sends a request to the beacon and blocks until the beacon confirms the request. `wait_for_data` blocks until the beacon returns a message with the correct CID_E.
 
 	```c++
 	SeatracDriver seatrac(serial_port);
@@ -214,18 +184,12 @@ class MyDriver : public SeatracDriver {
 
 ## SeaTrac Setup Tool
 
-The SeaTrac Setup Tool, located at seatrac_driver/tools/seatrac_setup_tool, is a terminal
-program that helps set the beacon id and remaining settings and calibrate a beacon
-before use. compile and run it the same way you would any of the examples. See
-[SeaTrac User Guide pg 18](https://www.blueprintsubsea.com/downloads/seatrac/UM-140-P00918-04.pdf#page=18)
-for calibration instructions.
+The SeaTrac setup tool, located at seatrac_driver/tools/seatrac_setup_tool, is a terminal program to help calibrate and modify settings on a beacon before use. Compile and run it the same way you would any of the examples. See [SeaTrac User Guide pg 18](https://www.blueprintsubsea.com/downloads/seatrac/UM-140-P00918-04.pdf#page=18) for calibration instructions.
 
 
 ## SeaTrac Message Formats
 
-seatrac_driver works by sending messages and receiving messages through a serial line with the beacon.
-Every message has a message id, defined in the CID_E enum. the message id tells you what information
-that message includes.
+seatrac_driver works by sending messages and receiving messages through a serial line with the beacon. Every message has a message id, defined in the CID_E enum. the message id tells you what information that message includes.
 
 The format for SeaTrac messages is defined in the [SeaTrac Developer User Guide](https://www.blueprintsubsea.com/downloads/seatrac/UM-140-D00221-07.pdf).
 It defines the [CID_E](https://www.blueprintsubsea.com/downloads/seatrac/UM-140-D00221-07.pdf#page=40)
@@ -246,7 +210,7 @@ transferred with the message payload.
 * NAV: Acoustic transmissions used to query sensor information from a remote beacon
 
 Each protocol has its own unique set of messages. The following
-are messages specifically for PING, but they generalize to the other protocols as well:
+are messages for the PING protocol. Other protocols have similar message types.
 
 * CID_PING_SEND: Instructs the beacon to send a ping to a remote beacon
 * CID_PING_REQ: Generated when the beacon receives a request from a remote beacon that it will respond to
@@ -260,10 +224,9 @@ Enums and Structs used in Acoustic messages:
 * BID_E: The beacon id between 1 and 15. Used to address acoustic messages.
 * NAV_QUERY_T: A bit mask indicating what information to query in a nav message.
 
-#### Non-Acoustic Messages
+#### Additional Messages
 
-* CID_STATUS: This message is output at a regular user defined interval. It contains
-	useful information from the beacon, such as the outputs of its auxiliary sensors
+* CID_STATUS: This message is output at a regular user defined interval. It contains useful information from the beacon, such as the outputs of its auxiliary sensors
 * CID_SETTINGS_... : used to manage the beacons settings
 * CID_XCVR_... : diagnostic data for the acoustic transceiver independent of acoustic protocols
 
@@ -272,7 +235,7 @@ Enums and Structs:
 * SETTINGS_T: a struct containing all the settings of the beacon
 * CST_E: Command status code. Indicates whether or not a command completed successfully and identify errors.
 
-#### Where things are in seatrac_driver
+#### File Navigation
 
 * All SeaTrac messages are defined in the [messages folder](https://github.com/BYU-FRoSt-Lab/seatrac_driver/tree/main/include/seatrac_driver/messages)
 * All enums (such as CID_E, AMSGTYPE_E, etc) are defined in [SeatracEnums.h](https://github.com/BYU-FRoSt-Lab/seatrac_driver/blob/main/include/seatrac_driver/SeatracEnums.h)
@@ -283,3 +246,5 @@ Enums and Structs:
 ## SeaTrac Support Webpage
 
 https://www.blueprintsubsea.com/seatrac/support
+
+Documentation for supported beacon firmware v2.4 can be found [here](https://www.blueprintsubsea.com/downloads/seatrac/UM-140-D00221-07.pdf). For documentation on the latest firmware release, see the support webpage.

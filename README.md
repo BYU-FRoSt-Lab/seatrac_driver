@@ -274,9 +274,9 @@ Enums and Structs:
 
 #### Where things are in seatrac_driver
 
-* All SeaTrac messages are defined in the [messages folder](https://bitbucket.org/frostlab/seatrac_driver/src/main/include/seatrac_driver/messages/)
-* All enums (such as CID_E, AMSGTYPE_E, etc) are defined in [SeatracEnums.h](https://bitbucket.org/frostlab/seatrac_driver/src/main/include/seatrac_driver/SeatracEnums.h)
-* All non-message structures (such as ACOMSG_T or SETTINGS_T) are defined in [SeatracTypes.h](https://bitbucket.org/frostlab/seatrac_driver/src/main/include/seatrac_driver/SeatracTypes.h)
+* All SeaTrac messages are defined in the [messages folder](https://github.com/BYU-FRoSt-Lab/seatrac_driver/tree/main/include/seatrac_driver/messages)
+* All enums (such as CID_E, AMSGTYPE_E, etc) are defined in [SeatracEnums.h](https://github.com/BYU-FRoSt-Lab/seatrac_driver/blob/main/include/seatrac_driver/SeatracEnums.h)
+* All non-message structures (such as ACOMSG_T or SETTINGS_T) are defined in [SeatracTypes.h](https://github.com/BYU-FRoSt-Lab/seatrac_driver/blob/main/include/seatrac_driver/SeatracTypes.h)
 
 
 

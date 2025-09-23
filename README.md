@@ -11,7 +11,7 @@ Four examples are included for a quick start.
 
 Supports x150/x110 beacon firmware v2.2 - v2.4.
 
-Full support for latest firmware release (through v3.7) is currently in developement.
+Support for latest firmware release (through v3.7) is currently in developement.
 
 ## Installation
 

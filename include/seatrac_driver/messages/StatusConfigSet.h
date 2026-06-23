@@ -22,9 +22,7 @@ struct StatusConfigSet : public Message<StatusConfigSet>
 }__attribute__((packed));
 
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::StatusConfigSet& msg)
@@ -33,6 +31,10 @@ inline std::ostream& operator<<(std::ostream& os,
     os << "StatusConfigSet : " << msg.statusCode;
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_STATUSCONFIGSET_H_
 

@@ -25,9 +25,7 @@ struct XcvrReceptionError : public Message<XcvrReceptionError>
 }__attribute__((packed));
 
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::XcvrReceptionError& msg)
@@ -38,6 +36,10 @@ inline std::ostream& operator<<(std::ostream& os,
        << prefix << "acousticFix : " << print_utils::indent(msg.acousticFix);
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_XCVR_RECEPTION_ERROR_h_
 

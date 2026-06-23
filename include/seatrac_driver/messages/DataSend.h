@@ -24,9 +24,7 @@ struct DataSend : public Message<DataSend> {
 
 }__attribute__((packed));
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::DataSend::Request& msg)
@@ -59,5 +57,9 @@ inline std::ostream& operator<<(std::ostream& os,
     return os;
 }
 
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_DATA_SEND_H_

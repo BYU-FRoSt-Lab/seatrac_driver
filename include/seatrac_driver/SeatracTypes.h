@@ -648,8 +648,7 @@ struct SETTINGS_T {
                             // fix.
 }__attribute__((packed));
 
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::ACOFIXRANGE_T& msg)
@@ -834,5 +833,8 @@ inline std::ostream& operator<<(std::ostream& os, const narval::seatrac::SETTING
        << prefix << "xcvrPosfltTmo  : " << (int)settings.xcvrPosfltTmo;
     return os;
 }
+
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_SEATRAC_TYPES_H_

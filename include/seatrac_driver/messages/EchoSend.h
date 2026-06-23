@@ -24,9 +24,7 @@ struct EchoSend : public Message<EchoSend> {
 
 }__attribute__((packed));
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::EchoSend::Request& msg)
@@ -59,5 +57,9 @@ inline std::ostream& operator<<(std::ostream& os,
     return os;
 }
 
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_ECHO_SEND_H_

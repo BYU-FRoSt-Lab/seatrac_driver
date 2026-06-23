@@ -20,9 +20,7 @@ struct SettingsReset : public Message<SettingsReset>
 }__attribute__((packed));
 
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::SettingsReset& msg)
@@ -30,6 +28,10 @@ inline std::ostream& operator<<(std::ostream& os,
     os << "SettingsReset : " << msg.statusCode;
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_SETTINGS_RESET_H_
 

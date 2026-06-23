@@ -638,8 +638,7 @@ enum ACOFIX_FLAGS : uint8_t {
     RANGE_VALID = 0x01,         // If this bit is set, it indicates the record contains the Range fields
 };
 
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os, narval::seatrac::BAUDRATE_E rate)
 {
@@ -877,5 +876,8 @@ inline std::ostream& operator<<(std::ostream& os, narval::seatrac::NAV_QUERY_E f
         os << "None";
     return os;
 }
+
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_SEATRAC_ENUMS_H_

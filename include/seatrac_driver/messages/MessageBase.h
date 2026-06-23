@@ -36,9 +36,7 @@ struct Message
     }
 }__attribute__((packed));
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 template <typename T>
 std::ostream& operator<<(std::ostream& os, const narval::seatrac::messages::Message<T>& msg)
@@ -46,6 +44,10 @@ std::ostream& operator<<(std::ostream& os, const narval::seatrac::messages::Mess
     os << "Message :\n- msgId : " << msg.msgId;
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_MESSAGE_BASE_H_
 

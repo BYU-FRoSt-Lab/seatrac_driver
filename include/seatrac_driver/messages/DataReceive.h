@@ -44,9 +44,7 @@ struct DataReceive : public Message<DataReceive>
 }__attribute__((packed));
 
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::DataReceive& msg)
@@ -70,6 +68,10 @@ inline std::ostream& operator<<(std::ostream& os,
     os << "\nLocal Flag: " << (msg.localFlag ? "True":"False");
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_DATA_RECEIVE_H_
 

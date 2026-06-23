@@ -23,9 +23,7 @@ struct SysReboot : public Message<SysReboot>
 }__attribute__((packed));
 
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::SysReboot& msg)
@@ -36,6 +34,10 @@ inline std::ostream& operator<<(std::ostream& os,
        << prefix << "status : " << (uint32_t)msg.status;
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_SYSREBOOT_H_
 

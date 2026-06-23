@@ -25,9 +25,7 @@ struct XcvrAnalyse : public Message<XcvrAnalyse>
 }__attribute__((packed));
 
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::XcvrAnalyse& msg)
@@ -43,6 +41,10 @@ inline std::ostream& operator<<(std::ostream& os,
        << prefix << "rxLevelRMS  : " << msg.rxLevelRMS;
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_XCVR_ANALYSE_h_
 

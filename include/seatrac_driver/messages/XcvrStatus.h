@@ -19,9 +19,7 @@ struct XcvrStatus : public Message<XcvrStatus>
 }__attribute__((packed));
 
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::XcvrStatus& msg)
@@ -29,6 +27,10 @@ inline std::ostream& operator<<(std::ostream& os,
     os << "XcvrStatus : " << msg.statusCode;
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_XCVR_STATUS_h_
 

@@ -22,9 +22,7 @@ struct PingResp : public Message<PingResp>
 }__attribute__((packed));
 
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::PingResp& msg)
@@ -32,6 +30,10 @@ inline std::ostream& operator<<(std::ostream& os,
     os << "PingResp : " << msg.acoFix;
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_PING_RESP_H_
 

@@ -301,9 +301,7 @@ struct Status : public Message<Status>
     }
 }__attribute__((packed));
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::StatusEnvironment& msg)
@@ -439,5 +437,9 @@ inline std::ostream& operator<<(std::ostream& os, const narval::seatrac::message
 
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_STATUS_H_

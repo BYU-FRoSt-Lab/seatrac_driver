@@ -20,9 +20,7 @@ struct SettingsSave : public Message<SettingsSave>
 }__attribute__((packed));
 
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::SettingsSave& msg)
@@ -30,6 +28,10 @@ inline std::ostream& operator<<(std::ostream& os,
     os << "SettingsSave : " << msg.statusCode;
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_SETTINGS_SAVE_H_
 

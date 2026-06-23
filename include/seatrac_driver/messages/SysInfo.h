@@ -22,9 +22,7 @@ struct SysInfo : public Message<SysInfo>
 }__attribute__((packed));
 
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::SysInfo& msg)
@@ -41,5 +39,9 @@ inline std::ostream& operator<<(std::ostream& os,
        << prefix << "boardRev     : " << (uint32_t)msg.boardRev;
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_SYSINFO_H_

@@ -23,9 +23,7 @@ struct PingSend : public Message<PingSend>
 }__attribute__((packed));
 
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::PingSend& msg)
@@ -33,6 +31,10 @@ inline std::ostream& operator<<(std::ostream& os,
     os << "PingSend : " << msg.statusCode << ", target : " << msg.target;
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_PING_SEND_H_
 

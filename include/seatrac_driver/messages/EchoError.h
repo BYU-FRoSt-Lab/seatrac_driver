@@ -13,9 +13,7 @@ struct EchoError : public Message<EchoError> {
     BID_E beaconId;
 }__attribute__((packed));
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::EchoError& msg)
@@ -25,5 +23,9 @@ inline std::ostream& operator<<(std::ostream& os,
        << "- status (error type): " << msg.status;
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_ECHO_ERROR_H_

@@ -36,9 +36,7 @@ struct NavQueryReq : public Message<NavQueryReq>
 }__attribute__((packed));
 
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::NavQueryReq& msg)
@@ -62,6 +60,10 @@ inline std::ostream& operator<<(std::ostream& os,
     os << "\nLocal Flag: " << (msg.localFlag ? "True":"False");
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_NAV_QUERY_REQ_H_
 

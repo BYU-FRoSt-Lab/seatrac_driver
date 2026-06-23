@@ -31,9 +31,7 @@ struct EchoResp : public Message<EchoResp>
 }__attribute__((packed));
 
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::EchoResp& msg)
@@ -55,6 +53,10 @@ inline std::ostream& operator<<(std::ostream& os,
     }
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_ECHO_RESP_H_
 

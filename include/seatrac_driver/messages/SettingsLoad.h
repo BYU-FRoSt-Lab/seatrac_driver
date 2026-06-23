@@ -20,9 +20,7 @@ struct SettingsLoad : public Message<SettingsLoad>
 }__attribute__((packed));
 
 
-}; //namespace messages
-}; //namespace seatrac
-}; //namespace narval
+
 
 inline std::ostream& operator<<(std::ostream& os,
                                 const narval::seatrac::messages::SettingsLoad& msg)
@@ -30,6 +28,10 @@ inline std::ostream& operator<<(std::ostream& os,
     os << "SettingsLoad : " << msg.statusCode;
     return os;
 }
+
+}; //namespace messages
+}; //namespace seatrac
+}; //namespace narval
 
 #endif //_DEF_SEATRAC_DRIVER_MESSAGES_SETTINGS_LOAD_H_
 
